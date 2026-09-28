@@ -34,15 +34,15 @@ const login = async (req, res) => {
     try {
         const userExists = await user.findOne({ where:{email}})
 
-        if(!user){
+        if(!userExists){
             return res.status(404).json({message: 'Usuário não encontrado!'});
         }
 
-        const checkPassword = await bcrypt.compare(password, user.password);
+        const checkPassword = await bcrypt.compare(password, userExists.password);
 
         if(!checkPassword) {
             return res.status(422).json({ message: 'Senha incorreta!'});
-        };
+        }
 
         await createUserToken(userExists, req, res);
 
