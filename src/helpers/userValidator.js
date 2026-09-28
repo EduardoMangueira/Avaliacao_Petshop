@@ -9,15 +9,15 @@ const registerValidator = () => [
     body('email')
         .isEmail()
         .withMessage('Insira um email válido')
-        .normalizeEmail,
-    body('passoword')
+        .normalizeEmail(),
+    body('password')
         .isString()
         .isLength({min: 7})
         .withMessage('A senha precisa ter no mínimo 7 caracteres')
 ];
 
 const loginValidator = () => [
-    body('email').isEmail.withMessage('Insira um email válido!'),
+    body('email').isEmail().withMessage('Insira um email válido!'),
     body('password').notEmpty().withMessage('A senha é obrigatória!'),
 ];
 
