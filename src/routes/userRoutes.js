@@ -6,4 +6,5 @@ const handleValidation = require('../Middlewares/handleValidation');
 router.post('/register', registerValidator(), handleValidation, userController.register);
 router.post('/login', loginValidator(), handleValidation, userController.login);
 
+
 module.exports = router;
